@@ -29,9 +29,8 @@ class AddRelationshipFieldToAssetGroupsTable extends Migration
     public function down()
     {
         Schema::table('asset_groups', function (Blueprint $table) {
-            $table->dropColumn([
-                'parent_id', 'tenant_id',
-            ]);
+            $table->dropForeign(['asset_groups_parent_id_tenant_id_foreign']); 
+            $table->dropColumn('parent_id', 'tenant_id');
         });
     }
 }

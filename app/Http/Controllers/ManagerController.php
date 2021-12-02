@@ -46,7 +46,7 @@ class ManagerController extends Controller
     {
         //
           $user = User::create($request->only([
-            'name', 'email', 'domain',
+            'name', 'email', 'domain', 'firstname', 'phone',
         ]));
 
         $user->roles()->attach(2);
