@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.public')
+
 @section('content')
-<div class="card">
+<div class="container card">
     <div class="card-header">
         Create tenant
     </div>
@@ -36,7 +37,7 @@
                     </div>
                 @endif
             </div>
-            
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', '') }}" required>

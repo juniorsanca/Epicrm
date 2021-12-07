@@ -16,11 +16,11 @@ class PermissionsTableSeeder extends Seeder
         $permissions      = [];
         $permissionGroups = [
             'tenant_management', 'user_management', 'role_management', 'asset_management',
-            'asset_group_management', 'image_management', 'document_management', 'note_management',
+            'asset_group_management', 'image_management', 'document_management', 'note_management','lead_management',
         ];
 
         foreach ($permissionGroups as $permissionGroup) {
-            foreach (['access', 'create', 'edit', 'show', 'delete'] as $permission) {
+            foreach (['access', 'create', 'edit', 'show', 'delete', 'export', 'import'] as $permission) {
                 $permissions[] = [
                     'id'    => ++$i,
                     'title' => $permissionGroup . '_' . $permission,

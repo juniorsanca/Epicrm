@@ -17,7 +17,7 @@ Route::group(['domain' => '{user:domain}.'.config('app.short_url'), 'as' => 'ten
     Route::get('/', 'TenantController@show')->name('show');
 });
 
-Route::redirect('/', '/home');
+Route::redirect('/', '/welcome');
 
 Auth::routes();
 
@@ -54,12 +54,22 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
 
     Route::resource('notes', 'NoteController');
 
+    Route::resource('leads', 'LeadController');
+
+    Route::get('export', 'LeadController@export')->name('leads.export');
+
+    Route::post('import', 'LeadController@import')->name('leads.import');
+
     Route::get('profile', 'ProfileController@edit')->name('profile.edit');
 
     Route::put('profile', 'ProfileController@update')->name('profile.update');
 });
 
+//Route::get('admin/leads/export', [\App\Http\Controllers\Admin\LeadController::class, 'exportIntoExcel'])->middleware('auth')->name('admin.leads.export');
+
 /* ---------[ DEBUT CODE JUNIOR - REGISTER POUR LES ADMIN TENANTS]----------- */
 
-    Route::get('manager/lo', [\App\Http\Controllers\ManagerController::class, 'create']);
-    Route::post('/man', [App\Http\Controllers\ManagerController::class, 'store'])->name('manager.store');    
+    Route::get('register', [\App\Http\Controllers\ManagerController::class, 'create']);
+    Route::post('/newuser', [App\Http\Controllers\ManagerController::class, 'store'])->name('manager.store');
+
+    Route::get('welcome', [\App\Http\Controllers\WelcomeController::class, 'index']);

@@ -1,17 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Notifications\TenantInvitation;
-use App\Http\Requests\StoreTenantRequest;
+
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateTenantRequest;
-use Illuminate\Support\Facades\URL;
-use Symfony\Component\HttpFoundation\Response;
-use Yajra\DataTables\Facades\DataTables;
 
-use App\User;
-
-class ManagerController extends Controller
+class WelcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,6 +14,7 @@ class ManagerController extends Controller
     public function index()
     {
         //
+        return view('welcome');
     }
 
     /**
@@ -31,31 +25,17 @@ class ManagerController extends Controller
     public function create()
     {
         //
-        //abort_if(Gate::denies('tenant_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('register');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
-          $user = User::create($request->only([
-            'name', 'email', 'domain', 'firstname', 'phone',
-        ]));
-
-        $user->roles()->attach(2);
-
-        $url = URL::signedRoute('invitation', $user);
-
-        $user->notify(new TenantInvitation($url));
-
-        return redirect()->to('/welcome');
     }
 
     /**
