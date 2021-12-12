@@ -16,6 +16,47 @@ class WelcomeController extends Controller
         //
         return view('welcome');
     }
+    public function about()
+    {
+        //
+        return view('about');
+    }
+    public function feature()
+    {
+        //
+        return view('feature');
+    }
+    public function price()
+    {
+        //
+        return view('price');
+    }
+    public function help()
+    {
+        //
+        return view('help');
+    }
+    public function guide()
+    {
+        //
+        return view('guide');
+    }
+    public function excel()
+    {
+        //
+        return view('excel');
+    }
+    public function gestion()
+    {
+        //
+        return view('gestion');
+    }
+    public function prospects()
+    {
+        //
+        return view('prospects');
+    }
+
 
     /**
      * Show the form for creating a new resource.

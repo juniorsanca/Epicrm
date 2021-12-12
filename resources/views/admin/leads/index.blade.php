@@ -50,9 +50,6 @@
                         <thead>
                         <tr>
                             <th>
-                                ID
-                            </th>
-                            <th>
                                 client
                             </th>
                              <th>
@@ -100,7 +97,6 @@
             aaSorting: [],
             ajax: "{{ route('admin.leads.index') }}",
             columns: [
-                { data: 'id', name: 'id' },
                 { data: 'client', name: 'client' },
                 { data: 'company', name: 'company' },
                 { data: 'coast', name: 'coast' },

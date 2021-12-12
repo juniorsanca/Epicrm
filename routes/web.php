@@ -69,7 +69,19 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
 
 /* ---------[ DEBUT CODE JUNIOR - REGISTER POUR LES ADMIN TENANTS]----------- */
 
+
+
     Route::get('register', [\App\Http\Controllers\ManagerController::class, 'create']);
     Route::post('/newuser', [App\Http\Controllers\ManagerController::class, 'store'])->name('manager.store');
 
-    Route::get('welcome', [\App\Http\Controllers\WelcomeController::class, 'index']);
+    Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
+    Route::get('about', [\App\Http\Controllers\WelcomeController::class, 'about']);
+    Route::get('feature', [\App\Http\Controllers\WelcomeController::class, 'feature']);
+    Route::get('price', [\App\Http\Controllers\WelcomeController::class, 'price']);
+
+    Route::get('help', [\App\Http\Controllers\WelcomeController::class, 'help']);
+    Route::get('guide', [\App\Http\Controllers\WelcomeController::class, 'guide']);
+    Route::get('excel', [\App\Http\Controllers\WelcomeController::class, 'excel']);
+    Route::get('gestion', [\App\Http\Controllers\WelcomeController::class, 'gestion']);
+    Route::get('prospects', [\App\Http\Controllers\WelcomeController::class, 'prospects']);
+

@@ -55,7 +55,7 @@ class ManagerController extends Controller
 
         $user->notify(new TenantInvitation($url));
 
-        return redirect()->to('/welcome');
+        return redirect()->to('/');
     }
 
     /**

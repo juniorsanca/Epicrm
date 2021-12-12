@@ -1,92 +1,279 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>Jumbotron example · Bootstrap v5.1</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/jumbotron/">
-
-
-
-    <!-- Bootstrap core CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-
-  </head>
-  <body cz-shortcut-listen="true">
-
-<main>
-  <div class="container py-4">
-    <header class="pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
-        <span class="fs-4">Jumbotron example</span>
-      </a>
-    </header>
-
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-
-            <a href="/login" class="d-flex align-items-center text-dark text-decoration-none">
-        <span class="btn btn-outline-primary" type="button">go to login</span>
-      </a>
-
-    </div>
-    </div>
-
-    <div class="row align-items-md-stretch">
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>Change the background</h2>
-          <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
-          <button class="btn btn-outline-light" type="button">Example button</button>
+@include('partials.header')
+    <div class="bg-black py-5" style="background-image: url('./img/bh.jpg')">
+        <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center">
+                    <div class="col-lg-8 col-xl-7 col-xxl-6">
+                        <div class="my-5 text-center text-xl-start">
+                            <h1 class="display-5 fw-bolder text-white mb-2">Le crm que vos commerciaux vont aimer remplir !</h1>
+                            <p class="lead fw-normal text-white mb-4">
+                                Pensé pour aider les équipes commerciales à suivre leurs prospects et conclure leurs ventes sans perdre de temps en saisies inutiles.
+                            </p>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                <a class="btn btn-lg px-4" href="#!" style="background-color: #65d353; color: #ffffff">Démarrer votre test gratuit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                        <img src="{{asset('./img/dashboard.png')}}" alt="image logo" class="image_logo" style="width: 500px; height: 280px">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Add borders</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-          <button class="btn btn-outline-secondary" type="button">Example button</button>
-        </div>
-      </div>
-    </div>
 
-    <footer class="pt-3 mt-4 text-muted border-top">
-      © 2021
-    </footer>
-  </div>
-</main>
+            <div class="" style="background-color: #FBFDFF">
+                <div class="container-fluid py-5"><br>
+                    <h5 style="text-align: center;font-size: 38px;"> Pourquoi epicCRM plutôt qu'un CRM? </h5>
+                </div>
+
+                <div class="container">
+
+                <div class=" row">
+                    <div class="col-md-4">
+                        <h4>Le problème des CRMs</h4>
+                        <p style="font-size: 15px">
+                            Les CRMs se concentrent sur l'organisation de la donnée, mais vendre ce n'est pas trier. Vendre est un processus qui démarre avec un prospect et doit finir avec un client.
+                            Des indicateurs clés pour les manageurs et des fonctionnalités de collaboration pour bâtir la meilleure équipe commerciale.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Notre solution</h4>
+                        <p style="font-size: 15px">
+                            noCRM.io est une solution de suivi des opportunités commerciale basée sur les prochaines actions (relance email, appel, visite ...). Son but est d'aider vos équipes commerciales à se concentrer sur leur objectif principal, convertir les prospects en clients.
+                            Créez facilement des opportunités depuis de multiples sources comme LinkedIn ou des cartes de visite. Diminuez le temps passé sur des formulaires et commencez à travaillez vos prospects tout de suite !
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Est-ce pour vous ?</h4>
+                        <p style="font-size: 15px">
+                            noCRM.io est l'outil idéal pour les TPE/PME qui cherchent un outil simple et efficace pour organiser leur prospection commerciale. Grâce à ses différentes éditions il convient au 1er commercial comme à des équipes de vente de 100 personnes
+                            noCRM.io est un logiciel en SaaS, il ne nécessite ni installation ni maintenance. Votre compte est accessible en ligne, à n'importe quel moment, où que vous soyez.
+                        </p>
+                    </div>
+                </div>
+                </div>
+
+                <br> <br> <br>
+                <div class="container px-4 py-5" id="icon-grid">
+                    <div>
+                        <h2 class="foncneed mb-4">
+                            Les fonctionnalités dont vos commerciaux <br> ont réellement besoin !
+                        </h2>
+                    </div><br>
+
+                    <section class="pt-4">
+                        <div class="px-lg-5">
+                            <!-- Page Features-->
+                            <div class="row gx-lg-5">
+                                <div class="col-lg-4 col-xxl-4 mb-5 ">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center p-4 p-lg-5 py-4 ">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="56" style="color: #2288e4" height="56" fill="currentColor" class="bi bi-app-indicator" viewBox="0 0 16 16">
+                                                    <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+                                                    <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 class="fs-6 fw-bold">Rappels d'activités</h3>
+                                            <small class="mb-0">
+                                                Le lorem ipsum est, en imprimerie, une suite de mots sans signification.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xxl-4 mb-5">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center p-4 p-lg-5 py-4">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="56" style="color: #2288e4" height="56" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                                                    <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 class="fs-6 fw-bold">Gestion des leads</h3>
+                                            <small class="mb-0">
+                                                Le lorem ipsum est, en imprimerie, une suite de mots sans signification.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xxl-4 mb-5">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center p-4 p-lg-5 py-4">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="56" style="color: #2288e4" height="56" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
+                                                    <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 class="fs-6 fw-bold">Rapports statistiques</h3>
+                                            <small class="mb-0">
+                                                Le lorem ipsum est, en imprimerie, une suite de mots sans signification.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xxl-4 mb-5">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center p-4 p-lg-5 py-4">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg"  width="56" style="color: #2288e4" height="56" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                                                    <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.818l5.724 3.465L8 8.917l1.276.766L15 6.218V5.4a1 1 0 0 0-.53-.882l-6-3.2zM15 7.388l-4.754 2.877L15 13.117v-5.73zm-.035 6.874L8 10.083l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738zM1 13.117l4.754-2.852L1 7.387v5.73zM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2z"/>
+                                                </svg>
+                                            </div>
+                                            <h2 class="fs-6 fw-bold">Notifications par email</h2>
+                                            <small class="mb-0">
+                                                Le lorem ipsum est, en imprimerie, une suite de mots sans signification.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xxl-4 mb-5">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center p-4 p-lg-5 py-4">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="56" style="color: #2288e4" height="56" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                                </svg>
+                                            </div>
+                                            <h2 class="fs-6 fw-bold">Suivi de l’activité</h2>
+                                            <small class="mb-0">
+                                                Le lorem ipsum est, en imprimerie, une suite de mots sans signification.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xxl-4 mb-5">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center p-4 p-lg-5 py-4">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="56" style="color: #2288e4" height="56" fill="currentColor" class="bi bi-aspect-ratio" viewBox="0 0 16 16">
+                                                    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                                                    <path d="M2 4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H3v2.5a.5.5 0 0 1-1 0v-3zm12 7a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H13V8.5a.5.5 0 0 1 1 0v3z"/>
+                                                </svg>
+                                            </div>
+                                            <h2 class="fs-6 fw-bold">Trello</h2>
+                                            <small class="mb-0">
+                                                Le lorem ipsum est, en imprimerie, une suite de mots sans signification.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="container">
+                    <h2 style="text-align: center; margin: 45px; font-family: Roboto;">
+                        La plateforme CRM simple à utiliser
+                    </h2>
+
+                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3 text-white bg-info border-info">
+                                <h4 class="my-0 fw-normal">Débutant</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">10€<small class="text-muted fw-light">/mois</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li style="position: center"> Création d’opportunités</li>
+                                    <li style="position: center"> Amélioration et suivie de la performance</li>
+                                    <li style="position: center"> Rappels d’activités</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-outline-info">Test gratuit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3 text-white bg-info border-info">
+                                <h4 class="my-0 fw-normal ">Pro</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">20€<small class="text-muted fw-light">/mois</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li style="position: center"> Création d’opportunités</li>
+                                    <li style="position: center"> Amélioration et suivie de la performance</li>
+                                    <li style="position: center"> Rappels d’activités</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-info" style="color: #ffffff">Test gratuit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm border-info">
+                            <div class="card-header py-3 text-white bg-info border-info">
+                                <h4 class="my-0 fw-normal">Enterprise</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">30€<small class="text-muted fw-light">/mois</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li style="position: center"> Création d’opportunités</li>
+                                    <li style="position: center"> Amélioration et suivie de la performance</li>
+                                    <li style="position: center"> Rappels d’activités</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-info" style="color: #ffffff">Test gratuit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><br><br><br>
 
 
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                        <tr>
+                            <th style="width: 34%;"></th>
+                            <th style="width: 22%;">Débutant</th>
+                            <th style="width: 22%;">Professionnel</th>
+                            <th style="width: 22%;">Enterprise</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">Rappels d'activités</th>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Gestion des leads</th>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                        </tr>
+                        </tbody>
 
-
-</body></html>
+                        <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">Rapports statistiques</th>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Notifications par email</th>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Support client</th>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Trello</th>
+                            <td></td>
+                            <td></td>
+                            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                <br>
+                <br>
+            </div>
+@include('partials.footer')
