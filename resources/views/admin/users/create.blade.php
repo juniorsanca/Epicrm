@@ -26,6 +26,7 @@
                     </div>
                 @endif
             </div>
+
             <div class="form-group">
                 <label for="role_id">Role</label>
                 <select class="form-control select2 {{ $errors->has('role_id') ? 'is-invalid' : '' }}" name="role_id" id="role_id" required>

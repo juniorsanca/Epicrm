@@ -71,6 +71,16 @@
                     {{ $lead->description ?? '' }}
                 </td>
             </tr>
+
+            <tr>
+                <th>
+                    User Assign
+                </th>
+                <td>
+                    {{ $lead->user_id ?? '' }}
+                </td>
+            </tr>
+
         </table>
         <div class="form-group">
             <a href="{{ route('admin.leads.index') }}" class="btn btn-info">

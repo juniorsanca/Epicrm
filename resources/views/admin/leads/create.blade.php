@@ -38,6 +38,19 @@
                 @endif
             </div>
 
+            <!-----[SELECT USER]----->
+            <div class="form-group">
+                {!! Form::label('tenant_id', trans('global.leads.fields.user'). '*',  ['class' => 'control-label']) !!}
+                {!! Form::select('tenant_id', $users, old('tenant_id'), ['class' => 'form-control select2']) !!}
+                <p class="help-block"></p>
+
+              @if($errors->has('tenant_id'))
+                    <p class="help-block">
+                        {{ $errors->first('tenant_id') }}
+                    </p>
+                @endif
+            </div>
+
                 <div class="form-group">
                 <label for="origin">Origin</label>
                 <input class="form-control {{ $errors->has('origin') ? 'is-invalid' : '' }}" type="text" name="origin" id="origin" value="{{ old('origin', '') }}" required>

@@ -1,19 +1,29 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container" style="padding-top: 15px;">
+<div class="container" style="">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
          <div class="text-center">
           <main class="form-signin">
 
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                <small>
+                    {{ session()->get('message') }}
+                </small>
+            </div>
+        @endif
+
         <form method="POST" action="{{ route("manager.store") }}" enctype="multipart/form-data">
             @csrf
 
             <a href="/" >
-            <img class="mb-4" src="{{asset('./img/dashboard.png')}}" alt="" width="100" height="100">
+            <img class="mb-4" src="{{asset('./img/dashboard.png')}}" alt="" width="80" height="50">
             </a>
-            <h3 class="">Créez votre compte EpiCRM</h3><br>
+            <h3 class="">Créez votre compte EpiCRM</h3>
+            <small>7 jours d'essai gratuit, sans carte</small>
 
             <div class="form-floating">
                 <input
@@ -104,10 +114,12 @@
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     </div>
                 </div>
-                 <p class="text-muted"> J'accepte les
+                 <small class="text-muted"> J'accepte les
                         <a href="#" class="">Conditions d'utilisation</a>
-                        <a href="#"> - Politique de cofidentialité</a>.
-                    </p>
+                        <a href="#"> Politique de cofidentialité</a>.
+                    </small>
+                    <br>
+                    <br>
             </div>
 
             <button class="w-100 btn btn-lg btn-success" type="submit">Créer votre compte</button>

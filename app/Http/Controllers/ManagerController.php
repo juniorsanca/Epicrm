@@ -28,12 +28,12 @@ class ManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register()
     {
         //
         //abort_if(Gate::denies('tenant_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         return view('register');
+
     }
 
     /**
@@ -55,7 +55,9 @@ class ManagerController extends Controller
 
         $user->notify(new TenantInvitation($url));
 
-        return redirect()->to('/');
+        return redirect()->back()->with('message', 'Vérifiez votre boîte e-mail,
+                cliquez sur le lien figurant dans l\'e-mail pour confirmer votre adresse et activez votre compte.');
+
     }
 
     /**

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 use App\Exports\LeadsExport;
 use App\Imports\LeadsImport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class LeadController extends Controller
@@ -26,34 +27,37 @@ class LeadController extends Controller
     {
         abort_if(Gate::denies('lead_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        /*
+        $lead = Lead::all();
+        dd($lead);
+        */
+
+        if(auth()->user()->roles()->first()->id == 2){
+                // rechercher par tenant_id
+                $lead = Lead::where('tenant_id', auth()->user()->id)->get();
+        } else  {
+                //$lead = Lead::get();
+                // dd(Lead::where('user_id', auth()->user()->id)->get());
+                $lead = Lead::where('user_id', auth()->user()->id)->get();
+                // rechercher par user_id
+        }
+        // dd($lead);
+
         if ($request->ajax()) {
-            $query = Lead::query()
-                ->select(sprintf('%s.*', (new Lead)->getTable()))
-                ->with('tenant')
-                ->when($request->input('tenant_id'), function ($query) use ($request) {
-                    $query->where('tenant_id', $request->input('tenant_id'));
-                });
-            $table = DataTables::of($query);
+            $table = DataTables::of($lead);
+
 
             $table->addColumn('actions', '&nbsp;');
-
             $table->editColumn('actions', function ($row) {
                 $crudRoutePart    = 'leads';
                 $permissionPrefix = 'lead_management_';
-
                 return view('partials.datatableActions', compact('crudRoutePart', 'row', 'permissionPrefix'));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : "";
-            });
-            $table->editColumn('asset', function ($row) {
-                return $row->asset ? $row->asset->name : "";
-            });
-            $table->editColumn('text', function ($row) {
-                return $row->text ? Str::limit($row->text, 50) : "";
-            });
-
+            //Afficher les colonnes avec les id,asset,text et actions
+            $table->editColumn('id', function ($row) { return $row->id ? $row->id : ""; });
+            $table->editColumn('asset', function ($row) { return $row->asset ? $row->asset->name : ""; });
+            $table->editColumn('text', function ($row) { return $row->text ? Str::limit($row->text, 50) : ""; });
             $table->rawColumns(['actions']);
 
             return $table->make(true);
@@ -69,11 +73,14 @@ class LeadController extends Controller
      */
     public function create()
     {
-        // abort_if(Gate::denies('note_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        //$assets = Asset::all()->pluck('name', 'id');
+        /*code to get out */
+         abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //dd(auth()->user()->id);
 
-        return view('admin.leads.create');
+        $users = \App\User::where('tenant_id', auth()->user()->id)->get()->pluck('name', 'id');;
+        //$users = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        return view('admin.leads.create', compact('users'));
     }
 
     /**
@@ -95,7 +102,6 @@ class LeadController extends Controller
             'phone' => 'required|string|max:10',
             'description' => 'required|string|max:255',
 
-
         ]);
 
         $lead = Lead::create([
@@ -107,6 +113,7 @@ class LeadController extends Controller
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'description' => $request->input('description'),
+            'user_id'=> $request->input('tenant_id')
         ]);
         return redirect()->route('admin.leads.index', $lead)->withMessage('Lead has been added successfully');
     }
@@ -119,7 +126,9 @@ class LeadController extends Controller
      */
     public function show(Lead $lead)
     {
-        //
+        // dd($lead);
+        abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('admin.leads.show', compact('lead'));
 
     }

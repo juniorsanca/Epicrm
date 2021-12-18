@@ -19,34 +19,30 @@
                     <div class="d-flex">
                     @can('lead_management_create')
                     <div class="form-group">
-                            <a href="{{ route('admin.leads.create') }}" class="btn btn-success">Add lead</a>
+                            <a href="{{ route('admin.leads.create') }}" class="btn btn-success btn-sm">Add lead</a>
                         </div>
                     @endcan
 
                     @can('lead_management_export')
                           <div class="form-group" style="margin-left: 5px">
-                            <a href="{{ route('admin.leads.export') }}" class="btn btn-dark">Export</a>
+                            <a href="{{ route('admin.leads.export') }}" class="btn btn-dark btn-sm">Export</a>
                         </div>
                     @endcan
 
                     @can('lead_management_import')
-              <!--            <div class="form-group" style="margin-left: 5px">
-                            <a href="{{ route('admin.leads.import') }}" class="btn btn-info">Import</a>
-                        </div>
-                    -->
-                                <form method="POST"
+                           <form method="POST"
                                   enctype="multipart/form-data"
                                   action="{{route('admin.leads.import')}}">
                                 @csrf
-                                <div class="d-flex form-group">
-                                    <input class="form-control form-control-sm" name="import_file" id="formFileSm" type="file">
-                                    <button type="submit" name="button" class="btn btn-secondary btn-sm" style="margin-left: 10px">Importer</button>
+                                <div class="mb-3 d-flex form-group">
+                                    <input class="form-control form-control-sm" name="import file" id="formFileSm" type="file" style="margin-left: 10px">
+                                    <button type="submit" name="button" class="btn btn-primary btn-sm" style="margin-left: 10px;">Importer</button>
                                 </div>
                             </form>
                     @endcan
-                      </div>
 
-                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable">
+                      </div>
+                    <table class="table table-bordered table-striped table-hover ajaxTable datatable">
                         <thead>
                         <tr>
                             <th>
@@ -64,11 +60,15 @@
                              <th>
                                 state
                             </th>
+
                              <th>
                                 email
                             </th>
                              <th>
                                 phone
+                            </th>
+                              <th>
+                                User
                             </th>
                             <th>
                                 description
@@ -79,7 +79,6 @@
                         </tr>
                         </thead>
                     </table>
-
                 </div>
             </div>
         </div>
@@ -104,6 +103,7 @@
                 { data: 'state', name: 'state' },
                 { data: 'email', name: 'email' },
                 { data: 'phone', name: 'phone' },
+                { data: 'user_id', name: 'user_id', },
                 { data: 'description', name: 'description' },
                 { data: 'actions', name: '' }
 

@@ -16,7 +16,10 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if (auth()->check() && auth()->user()->id)
+                        <small style="margin: 13px"> You are logged in, {{auth()->user()->name}}</small>
+                        @else
+                    @endif
                 </div>
             </div>
         </div>

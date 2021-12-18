@@ -68,10 +68,9 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
 //Route::get('admin/leads/export', [\App\Http\Controllers\Admin\LeadController::class, 'exportIntoExcel'])->middleware('auth')->name('admin.leads.export');
 
 /* ---------[ DEBUT CODE JUNIOR - REGISTER POUR LES ADMIN TENANTS]----------- */
+/*--[FRONTEND]--*/
+    Route::get('register', [\App\Http\Controllers\ManagerController::class, 'register'])->name('register');
 
-
-
-    Route::get('register', [\App\Http\Controllers\ManagerController::class, 'create']);
     Route::post('/newuser', [App\Http\Controllers\ManagerController::class, 'store'])->name('manager.store');
 
     Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
@@ -85,3 +84,13 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
     Route::get('gestion', [\App\Http\Controllers\WelcomeController::class, 'gestion']);
     Route::get('prospects', [\App\Http\Controllers\WelcomeController::class, 'prospects']);
 
+
+/*----------[ABONEMENTS]----------*/
+    Route::get('plans/home', [\App\Http\Controllers\PlanController::class, 'planhome'])->name('plans.home');
+    Route::get('plans', [\App\Http\Controllers\PlanController::class, 'index'])->name('plans.index');
+    Route::get('plans/{plan}', [\App\Http\Controllers\PlanController::class, 'show'])->name('plans.show');
+
+    Route::get('subscription', [\App\Http\Controllers\SubscriptionController::class, 'create'])->name('subscription.index');
+
+    Route::get('create/plan', [\App\Http\Controllers\SubscriptionController::class, 'createPlan'])->name('create.plan');
+    Route::post('store/plan', [\App\Http\Controllers\SubscriptionController::class, 'storePlan'])->name('store.plan');

@@ -17,10 +17,14 @@ class PermissionRoleTableSeeder extends Seeder
         $admin_permissions = $all_permissions->filter(function ($permission) {
             return substr($permission->title, 0, 18) == 'tenant_management_';
         });
+
+
         Role::findOrFail(1)->permissions()->sync($admin_permissions->pluck('id'));
         $tenant_admin_permissions = $all_permissions->filter(function ($permission) {
             return substr($permission->title, 0, 18) != 'tenant_management_';
         });
+
+
         Role::findOrFail(2)->permissions()->sync($tenant_admin_permissions);
         $tenant_user_permissions = $all_permissions->filter(function ($permission) {
             return substr($permission->title, 0, 17) == 'asset_management_'

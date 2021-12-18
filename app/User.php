@@ -8,10 +8,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
+
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, CascadeSoftDeletes, MultiTenantUserTrait;
+    use Notifiable, SoftDeletes, CascadeSoftDeletes, MultiTenantUserTrait, Billable;
 
     /**
      * The attributes that are mass assignable.

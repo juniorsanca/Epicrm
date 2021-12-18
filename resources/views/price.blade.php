@@ -1,5 +1,13 @@
 @include('partials.header')
-<div class="container">
+<div class="container"><br>
+        <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-4">
+            <h1 class="display-4 fw-bold" style="color: #4595ED; text-align:center">
+                Un tarif qui s'adapte.
+            </h1>
+            <p class="col-md-12 fs-6" style="text-align: center">Boostez vos ventes quelle que soit la taille de vos équipes.</p>
+        </div>
+    </div>
          <br>
             <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
                 <div class="col">

@@ -90,6 +90,8 @@ class UserController extends Controller
         ]));
 
         $user->roles()->attach($request->input('role_id'));
+        //$user->roles()->attach(3);
+
 
         $url = URL::signedRoute('invitation', $user);
 
@@ -109,6 +111,7 @@ class UserController extends Controller
         abort_if(Gate::denies('user_management_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user = User::where('tenant_id', auth()->id())->findOrFail($user);
+        dd($user);
 
         return view('admin.users.show', compact('user'));
     }
