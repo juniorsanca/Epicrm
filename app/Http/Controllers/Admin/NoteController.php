@@ -27,12 +27,14 @@ class NoteController extends Controller
         abort_if(Gate::denies('note_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
+
             $query = Note::query()
                 ->select(sprintf('%s.*', (new Note)->getTable()))
                 ->with('asset')
                 ->when($request->input('asset_id'), function ($query) use ($request) {
                     $query->where('asset_id', $request->input('asset_id'));
                 });
+
             $table = DataTables::of($query);
 
             $table->addColumn('actions', '&nbsp;');

@@ -17,13 +17,20 @@ class Lead extends Model
      * @var array
      */
     protected $fillable = [
-        'client', 'company', 'coast', 'origin', 'state', 'email', 'phone', 'description', 'tenant_id', 'user_id',
+        'client', 'company', 'coast', 'origin', 'state', 'email', 'phone', 'description', 'tenant_id', 'user_id', 'state_id',
     ];
 
 
     public function tenant()
     {
         return $this->belongsTo(User::class, 'tenant_id');
+    }
+
+    public function states()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+
+        //return $this->belongsToMany(State::class);
     }
 
     // public function lead()

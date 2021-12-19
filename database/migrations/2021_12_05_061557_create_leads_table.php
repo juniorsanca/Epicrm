@@ -25,8 +25,9 @@ class CreateLeadsTable extends Migration
             $table->string('description');
             $table->unsignedBigInteger('tenant_id');
             $table->foreign('tenant_id')->references('id')->on('users');
-
             $table->foreignId('user_id')->nullable();
+
+            $table->foreignId('state_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

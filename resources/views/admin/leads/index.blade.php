@@ -70,9 +70,11 @@
                               <th>
                                 User
                             </th>
+
                             <th>
-                                description
+                                state*
                             </th>
+
                             <th>
                                 &nbsp;
                             </th>
@@ -104,7 +106,7 @@
                 { data: 'email', name: 'email' },
                 { data: 'phone', name: 'phone' },
                 { data: 'user_id', name: 'user_id', },
-                { data: 'description', name: 'description' },
+                { data: 'states.title' },
                 { data: 'actions', name: '' }
 
             ],
@@ -116,7 +118,6 @@
             $($.fn.dataTable.tables(true)).DataTable()
                 .columns.adjust();
         });
-
     });
 
 </script>

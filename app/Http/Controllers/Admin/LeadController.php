@@ -12,8 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 use App\Exports\LeadsExport;
 use App\Imports\LeadsImport;
+use App\State;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Chart\Title;
 
 class LeadController extends Controller
 {
@@ -41,11 +43,18 @@ class LeadController extends Controller
                 $lead = Lead::where('user_id', auth()->user()->id)->get();
                 // rechercher par user_id
         }
-        // dd($lead);
+        //dd($lead);
 
         if ($request->ajax()) {
-            $table = DataTables::of($lead);
 
+            $lead = Lead::query()
+                ->select(sprintf('%s.*', (new Lead)->getTable()))
+                ->with('states')
+                ->when($request->input('state_id'), function ($lead) use ($request) {
+                $lead->where('state_id', $request->input('state_id'));
+                });
+
+            $table = DataTables::of($lead);
 
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) {
@@ -63,6 +72,9 @@ class LeadController extends Controller
             return $table->make(true);
         }
 
+
+        //states = State::all()->whereIn('id', $lead)->pluck("title", "id");
+        //dd($states);
         return view('admin.leads.index');
     }
 
@@ -79,14 +91,21 @@ class LeadController extends Controller
         //dd(auth()->user()->id);
 
         $users = \App\User::where('tenant_id', auth()->user()->id)->get()->pluck('name', 'id');;
-        //$users = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
-        return view('admin.leads.create', compact('users'));
+        // $states = State::all()->pluck('title');
+        //$states = \App\State::where('state_id', auth()->user()->id)->get()->pluck('title', 'id');;
+        $states = State::pluck('title', 'id');
+
+        //$x = State::all();
+        //$lead = Lead::where('user_id', auth()->user()->id)->get();
+
+        //dd($x);
+        return view('admin.leads.create', compact('users', 'states'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -113,8 +132,12 @@ class LeadController extends Controller
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'description' => $request->input('description'),
-            'user_id'=> $request->input('tenant_id')
+            'state'=> $request->input('state'),
+            'state_id' => $request->input('state_id')
+
         ]);
+
+
         return redirect()->route('admin.leads.index', $lead)->withMessage('Lead has been added successfully');
     }
 

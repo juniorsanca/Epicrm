@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLeadUserTable extends Migration
+class CreateStateLeadTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateLeadUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('lead_user', function (Blueprint $table) {
-
+        Schema::create('state_lead', function (Blueprint $table) {
+            $table->foreignId('state_id')->constrained()->cascadeOnDelete();
             $table->foreignId('lead_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateLeadUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lead_user');
+        Schema::dropIfExists('state_lead');
     }
 }

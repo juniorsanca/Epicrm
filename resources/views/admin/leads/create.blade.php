@@ -40,7 +40,7 @@
 
             <!-----[SELECT USER]----->
             <div class="form-group">
-                {!! Form::label('tenant_id', trans('global.leads.fields.user'). '*',  ['class' => 'control-label']) !!}
+                {!! Form::label('tenant_id', trans('Commercial'). '*',  ['class' => 'control-label']) !!}
                 {!! Form::select('tenant_id', $users, old('tenant_id'), ['class' => 'form-control select2']) !!}
                 <p class="help-block"></p>
 
@@ -50,6 +50,20 @@
                     </p>
                 @endif
             </div>
+
+            <!-----[SELECT STATE]----->
+            <div class="form-group">
+                {!! Form::label('state_id', trans('Statut'). '*',  ['class' => 'control-label']) !!}
+                {!! Form::select('state_id', $states, old('state_id'), ['class' => 'form-control select2']) !!}
+                <p class="help-block"></p>
+
+              @if($errors->has('state_id'))
+                    <p class="help-block">
+                        {{ $errors->first('state_id') }}
+                    </p>
+                @endif
+            </div>
+
 
                 <div class="form-group">
                 <label for="origin">Origin</label>

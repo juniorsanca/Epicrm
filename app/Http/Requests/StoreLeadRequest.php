@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 //use App\Asset;
+
+use App\State;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
@@ -54,6 +56,9 @@ class StoreLeadRequest extends FormRequest
             ],
             'description' => [
                 'required', 'string',
+            ],
+            'role_id' => [
+                'integer', 'in:' . State::pluck('id')->implode(','),
             ],
         ];
     }
