@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        My profile
+        Modifier votre profil
     </div>
 
     <div class="card-body">
@@ -10,7 +10,7 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">NOM Prénom</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $user->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
@@ -23,7 +23,7 @@
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" id="email" value="{{ $user->email }}" disabled>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Nouveau mot de passe</label>
                 <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" value="">
                 @if($errors->has('password'))
                     <div class="invalid-feedback">
@@ -32,7 +32,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="password_confirmation">Confirm Password</label>
+                <label for="password_confirmation">Confirmer le mot de passe</label>
                 <input class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" type="password" name="password_confirmation" id="password_confirmation" value="">
             </div>
             <div class="form-group">

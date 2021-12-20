@@ -2,14 +2,14 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Create role
+        Créer un role
     </div>
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.roles.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Titre</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
@@ -20,8 +20,8 @@
             <div class="form-group">
                 <label class="required" for="permissions">Permissions</label>
                 <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-sm select-all" style="border-radius: 0">Select all</span>
-                    <span class="btn btn-info btn-sm deselect-all" style="border-radius: 0">Deselect all</span>
+                    <span class="btn btn-info btn-sm select-all" style="border-radius: 0">Selectionner tout</span>
+                    <span class="btn btn-info btn-sm deselect-all" style="border-radius: 0">Désélectionner tout</span>
                 </div>
                 <select class="form-control select2 {{ $errors->has('permissions') ? 'is-invalid' : '' }}" name="permissions[]" id="permissions" multiple>
                     @foreach($permissions as $id => $permissions)

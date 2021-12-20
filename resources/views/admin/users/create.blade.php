@@ -9,7 +9,7 @@
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">NOM Prénom</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
@@ -18,7 +18,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Adresse email</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', '') }}" required>
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label for="role_id">Role</label>
+                <label for="role_id">Attribuer un rôle</label>
                 <select class="form-control select2 {{ $errors->has('role_id') ? 'is-invalid' : '' }}" name="role_id" id="role_id" required>
                     @foreach($roles as $id => $roles)
                         <option value="{{ $id }}" {{ old('role_id', 3) == $id ? 'selected' : '' }}>{{ $roles }}</option>
@@ -41,8 +41,8 @@
                 @endif
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit">
-                    Create
+                <button class="btn-sm btn btn-success" type="submit">
+                    Ajouter l'utilisateur
                 </button>
             </div>
         </form>

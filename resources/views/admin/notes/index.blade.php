@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Note management
+                    Gestion des notes
                 </div>
 
                 <div class="card-body">
@@ -18,7 +18,7 @@
 
                     @can('note_management_create')
                         <div class="form-group">
-                            <a href="{{ route('admin.notes.create') }}" class="btn btn-success">Add note</a>
+                            <a href="{{ route('admin.notes.create') }}" class="btn-sm btn btn-success">Ajouter une note</a>
                         </div>
                     @endcan
                     <table class=" table table-bordered table-striped table-hover ajaxTable datatable">
@@ -64,6 +64,30 @@
             orderCellsTop: true,
             order: [[ 0, 'desc' ]],
             pageLength: 100,
+                      "language": {
+                "search": "Rechercher :",
+                "sProcessing":    "Traitement...",
+                "sLengthMenu":    "Afficher _MENU_ notes",
+                "sZeroRecords":   "Aucun résultat trouvé",
+                "sEmptyTable":    "Aucune donnée disponible dans ce tableau",
+                "sInfo":          "_TOTAL_ note disponibles",
+                "sInfoEmpty":     "Votre recherche ne correspond avec aucun résultat !",
+                "sInfoFiltered":  "vous avez un total de _MAX_ notes",
+                "sInfoPostFix":   "",
+                "sUrl":           "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Mise en charge...",
+                "oPaginate": {
+                    "sFirst":    "Premier",
+                    "sLast":    "Dernier",
+                    "sNext":    "Prochain",
+                    "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activer pour trier la colonne par ordre croissant",
+                    "sSortDescending": ": Activer pour trier la colonne par ordre décroissant"
+                }
+            }
         });
         $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
             $($.fn.dataTable.tables(true)).DataTable()

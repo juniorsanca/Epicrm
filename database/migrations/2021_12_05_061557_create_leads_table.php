@@ -19,7 +19,6 @@ class CreateLeadsTable extends Migration
             $table->string('company');
             $table->string('coast');
             $table->string('origin');
-            $table->string('state');
             $table->string('email');
             $table->string('phone');
             $table->string('description');

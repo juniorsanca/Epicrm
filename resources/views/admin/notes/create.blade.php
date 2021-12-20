@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Add note
+        Ajouter une note
     </div>
 
     <div class="card-body">
@@ -36,7 +36,7 @@
             @endif
             <div class="form-group">
                 <button class="btn btn-success" type="submit">
-                    Create
+                    Ajouter
                 </button>
             </div>
         </form>

@@ -2,14 +2,14 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-         <small>Détails</small>
+         <small>Détails de l'opportunité</small>
     </div>
 
     <div class="card-body">
         <table class="table table-bordered table-striped">
             <tr>
                 <th>
-                    Client
+                    NOM Prénom
                 </th>
                 <td>
                     {{ $lead->client ?? '' }}
@@ -17,7 +17,7 @@
             </tr>
                       <tr>
                 <th>
-                    Entreprise
+                    Tags
                 </th>
                 <td>
                     {{ $lead->company ?? '' }}
@@ -25,7 +25,7 @@
             </tr>
                       <tr>
                 <th>
-                    Prix
+                    Montant
                 </th>
                 <td>
                     {{ $lead->coast ?? '' }} €
@@ -37,14 +37,6 @@
                 </th>
                 <td>
                     {{ $lead->origin ?? '' }}
-                </td>
-            </tr>
-                      <tr>
-                <th>
-                    Suivie
-                </th>
-                <td>
-                    {{ $lead->state ?? '' }}
                 </td>
             </tr>
                       <tr>
@@ -74,7 +66,7 @@
 
             <tr>
                 <th>
-                    User Assign
+                    Assigner à
                 </th>
                 <td>
                     {{ $lead->user_id ?? '' }}
@@ -84,7 +76,7 @@
         </table>
         <div class="form-group">
             <a href="{{ route('admin.leads.index') }}" class="btn btn-info">
-                Back to list
+                Retourner à la liste
             </a>
         </div>
     </div>

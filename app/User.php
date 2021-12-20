@@ -81,6 +81,11 @@ class User extends Authenticatable
         return $this->belongsTo(self::class, 'tenant_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(Lead::class);
+    }
+
     public function tenantUsers()
     {
         return $this->hasMany(self::class, 'tenant_id');

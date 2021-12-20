@@ -13,7 +13,7 @@
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
                 </i>
-                Home
+                Accueil
             </a>
         </li>
 
@@ -34,7 +34,7 @@
                     <i class="c-sidebar-nav-icon fas fa-fw fa-user">
 
                     </i>
-                    User management
+                    Gestion des utilisateurs
                 </a>
             </li>
         @endcan
@@ -45,11 +45,12 @@
                     <i class="c-sidebar-nav-icon fas fa-fw fa-user">
 
                     </i>
-                    Role management
+                    Gestion des rôles
                 </a>
             </li>
         @endcan
 
+        <!--
         @can('asset_group_management_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.asset-groups.index") }}" class="c-sidebar-nav-link">
@@ -94,7 +95,7 @@
             </li>
         @endcan
 
-
+        -->
         @can('note_management_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.notes.index") }}" class="c-sidebar-nav-link">
@@ -114,7 +115,7 @@
                     <i class="c-sidebar-nav-icon fas fa-fw fa-sticky-note">
 
                     </i>
-                    Lead management
+                    Gestion des prospects
                 </a>
             </li>
         @endcan
@@ -125,7 +126,7 @@
                 <i class="c-sidebar-nav-icon fas fa-fw fa-user">
 
                 </i>
-                My profile
+                 Profil
             </a>
         </li>
 
@@ -134,7 +135,7 @@
                 <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
 
                 </i>
-                Logout
+                Déconnexion
             </a>
         </li>
     </ul>

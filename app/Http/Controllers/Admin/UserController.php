@@ -97,7 +97,7 @@ class UserController extends Controller
 
         $user->notify(new UserInvitation($url));
 
-        return redirect()->route('admin.users.index')->withMessage('User has been created successfully');
+        return redirect()->route('admin.users.index')->withMessage('Nouvel utilisateur a été créé avec succès');
     }
 
     /**
@@ -154,7 +154,7 @@ class UserController extends Controller
             $user->roles()->sync($request->input('role_id', 3));
         }
 
-        return redirect()->route('admin.users.index')->withMessage('User has been updated successfully');
+        return redirect()->route('admin.users.index')->withMessage('L\'utilisateur a été mis à jour avec succès');
     }
 
     /**
@@ -172,6 +172,6 @@ class UserController extends Controller
             ->findOrFail($user)
             ->delete();
 
-        return redirect()->back()->withMessage('User has been deleted successfully');
+        return redirect()->back()->withMessage('L\'utilisateur a été supprimé avec succès');
     }
 }

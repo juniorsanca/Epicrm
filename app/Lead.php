@@ -17,7 +17,7 @@ class Lead extends Model
      * @var array
      */
     protected $fillable = [
-        'client', 'company', 'coast', 'origin', 'state', 'email', 'phone', 'description', 'tenant_id', 'user_id', 'state_id',
+        'client', 'company', 'coast', 'origin', 'email', 'phone', 'description', 'tenant_id', 'user_id', 'state_id',
     ];
 
 
@@ -29,6 +29,13 @@ class Lead extends Model
     public function states()
     {
         return $this->belongsTo(State::class, 'state_id');
+
+        //return $this->belongsToMany(State::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
 
         //return $this->belongsToMany(State::class);
     }

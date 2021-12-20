@@ -1,12 +1,12 @@
 @can($permissionPrefix . 'show')
-  <a class="btn btn-sm btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
-        View
+  <a class=" btn-sm btn btn-outline-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
+        Voir
     </a>
 @endcan
 
 @can($permissionPrefix . 'edit')
-<a class="btn btn-sm btn-info" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
-    Edit
+<a class=" btn-sm btn btn-outline-info" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
+    Modifier
 </a>
 @endcan
 
@@ -21,9 +21,9 @@
         </a>
     @endif
 
-    <form action="{{ route('admin.' . $crudRoutePart . '.destroy', $row->id) }}" method="POST" onsubmit="return confirm('Are you sure?');" style="display: inline-block;">
+    <form action="{{ route('admin.' . $crudRoutePart . '.destroy', $row->id) }}" method="POST" onsubmit="return confirm('etes vous sûr de vouloir supprimer?');" style="display: inline-block;">
         <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+        <input type="submit" class="btn btn-outline-danger btn-sm" value="Supprimer">
     </form>
 @endcan

@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Edit note
+        Modifier une note
     </div>
 
     <div class="card-body">
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-success" type="submit">
-                    Edit
+                    Modifier
                 </button>
             </div>
         </form>

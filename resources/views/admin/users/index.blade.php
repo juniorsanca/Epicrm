@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    User management
+                    Gestion des utilisateurs
                 </div>
 
                 <div class="card-body">
@@ -18,7 +18,7 @@
 
                     @can('user_management_create')
                         <div class="form-group">
-                            <a href="{{ route('admin.users.create') }}" class="btn btn-success">Create user</a>
+                            <a href="{{ route('admin.users.create') }}" class="btn-sm btn btn-success">Ajouter un utilisateur</a>
                         </div>
                     @endcan
                     <table class=" table table-bordered table-striped table-hover ajaxTable datatable">
@@ -28,13 +28,13 @@
                                 ID
                             </th>
                             <th>
-                                Name
+                                Nom Prénom
                             </th>
                             <th>
-                                Email
+                                Adresse email
                             </th>
                             <th>
-                                Role
+                                Rôle
                             </th>
                             <th>
                                 &nbsp;

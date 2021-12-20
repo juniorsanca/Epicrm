@@ -13,6 +13,7 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Exports\LeadsExport;
 use App\Imports\LeadsImport;
 use App\State;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Chart\Title;
@@ -29,31 +30,30 @@ class LeadController extends Controller
     {
         abort_if(Gate::denies('lead_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        /*
-        $lead = Lead::all();
-        dd($lead);
-        */
-
-        if(auth()->user()->roles()->first()->id == 2){
-                // rechercher par tenant_id
-                $lead = Lead::where('tenant_id', auth()->user()->id)->get();
-        } else  {
-                //$lead = Lead::get();
-                // dd(Lead::where('user_id', auth()->user()->id)->get());
-                $lead = Lead::where('user_id', auth()->user()->id)->get();
-                // rechercher par user_id
+        if (auth()->user()->roles()->first()->id == 2) {
+            // rechercher par tenant_id
+            $lead = Lead::where('tenant_id', auth()->user()->id)->get();
+        } else {
+            $lead = Lead::where('user_id', auth()->user()->id)->get();
+            // rechercher par user_id
         }
-        //dd($lead);
 
         if ($request->ajax()) {
 
-            $lead = Lead::query()
-                ->select(sprintf('%s.*', (new Lead)->getTable()))
+            /*
+                $lead = Lead::query()->select(sprintf('%s.*', (new Lead)->getTable()))
+                    ->with('user')
+                    ->when($request->input('user_id'), function ($lead) use ($request) {
+                        $lead->where('user_id', $request->input('user_id'));
+                    });
+                */
+            /*
+            $lead = Lead::query()->select(sprintf('%s.*', (new Lead)->getTable()))
                 ->with('states')
                 ->when($request->input('state_id'), function ($lead) use ($request) {
-                $lead->where('state_id', $request->input('state_id'));
+                    $lead->where('state_id', $request->input('state_id'));
                 });
-
+            */
             $table = DataTables::of($lead);
 
             $table->addColumn('actions', '&nbsp;');
@@ -116,7 +116,6 @@ class LeadController extends Controller
             'company' => 'required|string|max:255',
             'coast' => 'required|string|max:255',
             'origin' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:10',
             'description' => 'required|string|max:255',
@@ -128,17 +127,16 @@ class LeadController extends Controller
             'company' => $request->input('company'),
             'coast' => $request->input('coast'),
             'origin' => $request->input('origin'),
-            'state' => $request->input('state'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'description' => $request->input('description'),
-            'state'=> $request->input('state'),
+            'user_id'=> $request->input('tenant_id'),
             'state_id' => $request->input('state_id')
 
         ]);
 
 
-        return redirect()->route('admin.leads.index', $lead)->withMessage('Lead has been added successfully');
+        return redirect()->route('admin.leads.index', $lead)->withMessage('Le prospect a été crée avec succès');
     }
 
     /**
@@ -184,7 +182,6 @@ class LeadController extends Controller
             'company' => 'required|string|max:255',
             'coast' => 'required|string|max:255',
             'origin' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:10',
             'description' => 'required|string|max:255',
@@ -194,17 +191,16 @@ class LeadController extends Controller
 
         $lead = Lead::find($id);
         $lead->update([
-            'date' => $request->date,
             'client' => $request->client,
             'company' => $request->company,
             'coast' => $request->coast,
             'origin' => $request->origin,
-            'state' => $request->state,
             'email' => $request->email,
             'phone' => $request->phone,
             'description' => $request->description,
+            'state_id' => $request->state_id
         ]);
-        return redirect()->route('admin.leads.index')->withMessage('Lead has been edited successfully');
+        return redirect()->route('admin.leads.index')->withMessage('Le prospect a été mis à jour');
 
     }
 
@@ -221,7 +217,7 @@ class LeadController extends Controller
 
         $lead->delete();
 
-        return redirect()->back()->withMessage('Lead has been deleted successfully');
+        return redirect()->back()->withMessage('Le prospect a été supprimé avec succès');
     }
 
     public function export()
@@ -244,6 +240,6 @@ class LeadController extends Controller
         */
         //Excel::import(new LeadsImport, 'leads.xlsx');
 
-        return redirect()->back()->withMessage( 'Lead has been added successfully');
+        return redirect()->back()->withMessage('Le prospect a été importé avec succès');
     }
 }

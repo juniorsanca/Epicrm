@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Lead management
+                    Liste des opportunités
                 </div>
 
                 <div class="card-body">
@@ -19,26 +19,28 @@
                     <div class="d-flex">
                     @can('lead_management_create')
                     <div class="form-group">
-                            <a href="{{ route('admin.leads.create') }}" class="btn btn-success btn-sm">Add lead</a>
+                            <a href="{{ route('admin.leads.create') }}" class="btn btn-outline-success btn-sm">Ajouter</a>
                         </div>
                     @endcan
 
                     @can('lead_management_export')
                           <div class="form-group" style="margin-left: 5px">
-                            <a href="{{ route('admin.leads.export') }}" class="btn btn-dark btn-sm">Export</a>
+                            <a href="{{ route('admin.leads.export') }}" class="btn btn-outline-dark btn-sm">Exporter</a>
                         </div>
                     @endcan
 
                     @can('lead_management_import')
-                           <form method="POST"
+                    <div class="form-group">
+                            <form method="POST"
                                   enctype="multipart/form-data"
                                   action="{{route('admin.leads.import')}}">
                                 @csrf
                                 <div class="mb-3 d-flex form-group">
                                     <input class="form-control form-control-sm" name="import file" id="formFileSm" type="file" style="margin-left: 10px">
-                                    <button type="submit" name="button" class="btn btn-primary btn-sm" style="margin-left: 10px;">Importer</button>
+                                    <button type="submit" name="button" class="btn btn-outline-primary btn-sm" style="margin-left: 10px;">Importer </button>
                                 </div>
                             </form>
+                        </div>
                     @endcan
 
                       </div>
@@ -58,23 +60,20 @@
                                 origin
                             </th>
                              <th>
-                                state
-                            </th>
-
-                             <th>
                                 email
                             </th>
                              <th>
                                 phone
                             </th>
+                        <!--
                               <th>
-                                User
+                                Commercial
                             </th>
 
                             <th>
                                 state*
                             </th>
-
+                        -->
                             <th>
                                 &nbsp;
                             </th>
@@ -102,17 +101,41 @@
                 { data: 'company', name: 'company' },
                 { data: 'coast', name: 'coast' },
                 { data: 'origin', name: 'origin' },
-                { data: 'state', name: 'state' },
                 { data: 'email', name: 'email' },
                 { data: 'phone', name: 'phone' },
-                { data: 'user_id', name: 'user_id', },
-                { data: 'states.title' },
+                //{ data: 'user.name'},
+                //{ data: 'states.title' },
                 { data: 'actions', name: '' }
 
             ],
             orderCellsTop: true,
             order: [[ 0, 'desc' ]],
             pageLength: 100,
+
+                "language": {
+                "search": "Rechercher :",
+                "sProcessing":    "Traitement...",
+                "sLengthMenu":    "Afficher _MENU_ prospects",
+                "sZeroRecords":   "Aucun résultat trouvé",
+                "sEmptyTable":    "Aucune donnée disponible dans ce tableau",
+                "sInfo":          "_TOTAL_ prospects disponibles",
+                "sInfoEmpty":     "Votre recherche ne correspond avec aucun résultat !",
+                "sInfoFiltered":  "vous avez un total de _MAX_ prospects",
+                "sInfoPostFix":   "",
+                "sUrl":           "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Mise en charge...",
+                "oPaginate": {
+                    "sFirst":    "Premier",
+                    "sLast":    "Dernier",
+                    "sNext":    "Prochain",
+                    "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activer pour trier la colonne par ordre croissant",
+                    "sSortDescending": ": Activer pour trier la colonne par ordre décroissant"
+                }
+            }
         });
         $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
             $($.fn.dataTable.tables(true)).DataTable()
