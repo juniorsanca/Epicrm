@@ -1,7 +1,8 @@
 @extends('layouts.auth')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 @section('content')
-<div class="container" style="padding-top: 40px;">
+<div class="container" style="padding-top: 10px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
                 <div class="text-center">
@@ -17,20 +18,20 @@
                             </a>
                             <h5 class="">Connexion à votre compte EpiCRM</h5><br>
 
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
                                 <input
                                 type="email"
                                 class="form-control @error('email') is-invalid @enderror"
                                 id="email"
                                 placeholder="name@example.com"
                                 name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                                <label for="floatingInput">Adresse email</label>
+                            </div>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
                                 @enderror
-                            </div>
 
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
                                 <input
                                 type="password"
                                 class="form-control"
@@ -38,13 +39,14 @@
                                 class="form-control @error('password') is-invalid @enderror"
                                 name="password" required autocomplete="current-password"
                                 placeholder="Password">
-
+                                <label for="floatingInput">Mot passe</label>
+                            </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+
 
                             <div class="checkbox mb-3">
                                 <div class="form-check">
@@ -71,7 +73,6 @@
                                         </a>
                                     @endif
                                 </div>
-
                         </form>
                     </main>
             </div>

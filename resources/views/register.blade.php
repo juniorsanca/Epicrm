@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container" style="">
-
     <div class="row justify-content-center">
         <div class="col-md-8">
          <div class="text-center">
@@ -25,15 +24,18 @@
             <h3 class="">Créez votre compte EpiCRM</h3>
             <small>7 jours d'essai gratuit, sans carte</small>
 
-            <div class="form-floating">
+            <div>
+            <div class="form-floating mb-3">
                 <input
                 class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}"
                 type="text"
+                aria-label="Prénom"
                 name="firstname"
                 id="firstname"
                 placeholder="Prénom"
                 value="{{ old('firstname', '') }}" required>
-
+                <label for="floatingInput">Prénom</label>
+            </div>
                 @if($errors->has('firstname'))
                     <div class="invalid-feedback">
                         {{ $errors->first('firstname') }}
@@ -41,8 +43,7 @@
                 @endif
             </div>
 
-
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input
                 class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
                 type="text"
@@ -50,15 +51,15 @@
                 id="name"
                 placeholder="Nom"
                 value="{{ old('name', '') }}" required>
-
-                @if($errors->has('name'))
+                <label for="floatingInput">Nom</label>
+                     @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
                     </div>
                 @endif
             </div>
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input
                 class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
                 type="number"
@@ -66,16 +67,16 @@
                 id="number"
                 placeholder="Téléphone"
                 value="{{ old('phone', '') }}" required>
-
+                <label for="floatingInput">Téléphone</label>
+            </div>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
                     </div>
                 @endif
-            </div>
 
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input
                 class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
                 type="email"
@@ -83,16 +84,16 @@
                 id="email"
                 placeholder="Email"
                 value="{{ old('email', '') }}" required>
-
+                <label for="floatingInput">Adresse email</label>
+            </div>
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
                     </div>
                 @endif
-            </div>
 
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input
                 class="form-control {{ $errors->has('domain') ? 'is-invalid' : '' }}"
                 type="text"
@@ -100,13 +101,13 @@
                 id="domain"
                 placeholder="Entreprise"
                 value="{{ old('email', '') }}" required>
-
+                <label for="floatingInput">Entreprise</label>
+            </div><br>
                 @if($errors->has('domain'))
                     <div class="invalid-feedback">
                         {{ $errors->first('domain') }}
                     </div>
                 @endif
-            </div><br>
 
             <div class="d-flex">
                 <div class="">
