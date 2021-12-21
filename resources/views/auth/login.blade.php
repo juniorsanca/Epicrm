@@ -76,10 +76,12 @@
                     </main>
             </div>
         </div>
-        <p class="text-muted">EpiCRM un crm epic
-            <a href="#" class="">Conditions d'utilisation</a>
-            <a href="#"> - Politique de cofidentialité</a>.
-        </p>
+        <div style="text-align: center">
+            <p class="text-muted">EpiCRM un crm epic
+                    <a href="#" class="">Conditions d'utilisation</a>
+                    <a href="#"> - Politique de cofidentialité</a>.
+                </p>
+        </div>
     </div>
 </div>
 @endsection
