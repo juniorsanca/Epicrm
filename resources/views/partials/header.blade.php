@@ -12,6 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/pricing/">
 
     <!-- JAVASCRIPT -->
@@ -84,6 +85,39 @@
         .pricing-header {
             max-width: 700px;
         }
+
+
+            .form-signin {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            margin: auto;
+            }
+
+            .form-floating>.form-control, .form-floating>.form-select {
+            height: calc(3.5rem + 2px);
+            }
+
+            .form-signin .checkbox {
+            font-weight: 400;
+            }
+
+            .form-signin .form-floating:focus-within {
+            z-index: 2;
+            }
+
+            .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            }
+
 
     </style>
 </head>
