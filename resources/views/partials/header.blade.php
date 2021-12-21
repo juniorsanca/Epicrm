@@ -127,6 +127,12 @@
             <a class="" href="/login" style="text-decoration: none">Se connecter</a>
         </button>
 
+        <button type="button" class="btn btn-dark btn-sm" style="margin-left:10px">
+            <a href="/register" style="text-decoration: none; color:blanchedalmond;">
+                S'inscrire
+            </a>
+        </button>
+
       </ul>
     </div>
   </nav>

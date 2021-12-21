@@ -63,15 +63,14 @@
                             <button class="w-100 btn btn-lg btn-primary" type="submit">Se connecter</button>
                             <p class="mt-5 mb-3 text-muted">© 2021–2022</p>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
+
+                                <div class="align-center">
                                     @if (Route::has('register'))
-                                        <a class="btn btn-link" href="{{ route('register') }}">
-                                            {{ __('Register') }}
+                                        Vous n’avez pas de compte  ? <a class="btn btn-link" href="{{ route('register') }}">
+                                            {{ __(' Inscrivez-vous') }}
                                         </a>
                                     @endif
                                 </div>
-                            </div>
 
                         </form>
                     </main>

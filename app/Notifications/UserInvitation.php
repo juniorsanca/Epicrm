@@ -43,8 +43,8 @@ class UserInvitation extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You have been invited as an user!')
-                    ->action('Accept Invitation', $this->url)
-                    ->line('Thank you for using our application!');
+                    ->line('Vous avez été invité en tant qu\'utilisateur!')
+                    ->action('Accepter l\'invitation', $this->url)
+                    ->line('Merci d\'avoir choisie notre application!');
     }
 }

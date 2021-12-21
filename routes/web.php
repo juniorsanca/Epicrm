@@ -55,6 +55,8 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
     Route::resource('notes', 'NoteController');
 
     Route::resource('leads', 'LeadController');
+    //Route::get('leads', 'LeadController');
+
 
     Route::get('export', 'LeadController@export')->name('leads.export');
 

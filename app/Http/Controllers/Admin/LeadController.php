@@ -102,6 +102,60 @@ class LeadController extends Controller
         return view('admin.leads.create', compact('users', 'states'));
     }
 
+
+    public function todo()
+    {
+
+        /*code to get out */
+        //abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //dd(auth()->user()->id);
+
+        //Afficher une liste avec des leads à faire ou Entrant !
+
+        return view('admin.leads.todo');
+    }
+
+
+
+    public function waiting()
+    {
+
+        /*code to get out */
+        abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //dd(auth()->user()->id);
+
+        //Afficher une liste avec les leads en atente!
+
+        return view('admin.leads.waiting', compact('users', 'states'));
+    }
+
+
+    public function do()
+    {
+
+        /*code to get out */
+        abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //dd(auth()->user()->id);
+
+        //Afficher une liste avec leads déjà fait !
+        return view('admin.leads.do', compact('users', 'states'));
+    }
+
+
+    public function lost()
+    {
+
+        /*code to get out */
+        abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //dd(auth()->user()->id);
+
+        //Afficher la liste avec les leads classé comme perdu
+
+        return view('admin.leads.lost', compact('users', 'states'));
+    }
+
+
+
     /**
      * Store a newly created resource in storage.
      *
