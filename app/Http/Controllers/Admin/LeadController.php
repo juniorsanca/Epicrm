@@ -90,7 +90,17 @@ class LeadController extends Controller
          abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         //dd(auth()->user()->id);
 
+        if (auth()->user()->roles()->first()->id == 2) {
+            // rechercher par tenant_id
         $users = \App\User::where('tenant_id', auth()->user()->id)->get()->pluck('name', 'id');;
+        } else {
+        $users = \App\User::where('id', auth()->user()->id)->get()->pluck('name', 'id');;
+            // rechercher par user_id
+        }
+
+        //$users = \App\User::where('tenant_id', auth()->user()->id)->get()->pluck('name', 'id');;
+        //$users = \App\User::pluck('name', 'id');;
+
         // $states = State::all()->pluck('title');
         //$states = \App\State::where('state_id', auth()->user()->id)->get()->pluck('title', 'id');;
         $states = State::pluck('title', 'id');

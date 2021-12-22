@@ -44,19 +44,20 @@
             <!-----[SELECT USER]----->
             <div class="form-group" style="width: 99%">
                 {!! Form::label('tenant_id', trans('Assigner à'). '',  ['class' => 'control-label']) !!}
+
                 {!! Form::select('tenant_id', $users, old('tenant_id'), ['class' => 'form-control select2']) !!}
                 <p class="help-block"></p>
-
+            </div>
               @if($errors->has('tenant_id'))
                     <p class="help-block">
                         {{ $errors->first('tenant_id') }}
                     </p>
-                @endif
-            </div>
+              @endif
 
             <!-----[SELECT STATE]----->
             <div class="form-group" style="width: 99%">
                 {!! Form::label('state_id', trans('Entrant'). '',  ['class' => 'control-label']) !!}
+
                 {!! Form::select('state_id', $states, old('state_id'), ['class' => 'form-control select2']) !!}
                 <p class="help-block"></p>
 
