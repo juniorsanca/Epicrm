@@ -81,6 +81,12 @@ class User extends Authenticatable
         return $this->belongsTo(self::class, 'tenant_id');
     }
 
+    public function lead()
+    {
+        return $this->belongsTo('App\Lead');
+    }
+
+    //examiner ce code
     public function user()
     {
         return $this->belongsTo(Lead::class);

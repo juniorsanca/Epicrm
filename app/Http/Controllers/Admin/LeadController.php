@@ -113,6 +113,47 @@ class LeadController extends Controller
     }
 
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $request->validate([
+            'client' => 'required|string|max:255',
+            'company' => 'required|string|max:255',
+            'coast' => 'required|string|max:255',
+            'origin' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:10',
+            'description' => 'required|string|max:255',
+            /*IMPORTANT : Ajouter les champs necessaires apres!! */
+
+        ]);
+
+        $lead = Lead::create([
+            'date'=> $request->input('date'),
+            'client' => $request->input('client'),
+            'company' => $request->input('company'),
+            'state_id' => $request->input('state_id'),
+            'coast' => $request->input('coast'),
+            'origin' => $request->input('origin'),
+            'next_action'=> $request->input('next_action'),
+            'action_state' => $request->input('action_state'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'description' => $request->input('description'),
+            'user_id' => $request->input('tenant_id')
+        ]);
+
+
+        return redirect()->route('admin.leads.index', $lead)->withMessage('Le prospect a été crée avec succès');
+    }
+
+
     public function todo()
     {
 
@@ -165,44 +206,6 @@ class LeadController extends Controller
     }
 
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-        $request->validate([
-            'client' => 'required|string|max:255',
-            'company' => 'required|string|max:255',
-            'coast' => 'required|string|max:255',
-            'origin' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:10',
-            'description' => 'required|string|max:255',
-
-        ]);
-
-        $lead = Lead::create([
-            'client' => $request->input('client'),
-            'company' => $request->input('company'),
-            'coast' => $request->input('coast'),
-            'origin' => $request->input('origin'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'description' => $request->input('description'),
-            'user_id'=> $request->input('tenant_id'),
-            'state_id' => $request->input('state_id')
-
-        ]);
-
-
-        return redirect()->route('admin.leads.index', $lead)->withMessage('Le prospect a été crée avec succès');
-    }
-
     /**
      * Display the specified resource.
      *
@@ -214,7 +217,11 @@ class LeadController extends Controller
         // dd($lead);
         abort_if(Gate::denies('lead_management_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.leads.show', compact('lead'));
+
+        //$lead = Lead::all();
+        //$user = User::all();
+
+        return view('admin.leads.show', compact('lead', 'user'));
 
     }
 
@@ -228,7 +235,10 @@ class LeadController extends Controller
     {
         //
         abort_if(Gate::denies('lead_management_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('admin.leads.edit', compact('lead'));
+
+        $states = State::all()->pluck('title', 'id');
+
+        return view('admin.leads.edit', compact('lead', 'states'));
     }
 
     /**
@@ -255,14 +265,17 @@ class LeadController extends Controller
 
         $lead = Lead::find($id);
         $lead->update([
+            'date'=> $request->date,
             'client' => $request->client,
             'company' => $request->company,
+            'state_id' => $request->state_id,
             'coast' => $request->coast,
             'origin' => $request->origin,
+            'next_action'=> $request->next_action,
+            'action_state' => $request->action_state,
             'email' => $request->email,
             'phone' => $request->phone,
-            'description' => $request->description,
-            'state_id' => $request->state_id
+            'description' => $request->description
         ]);
         return redirect()->route('admin.leads.index')->withMessage('Le prospect a été mis à jour');
 

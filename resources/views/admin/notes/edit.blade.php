@@ -20,6 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="asset_id">Asset</label>
+
                 <select class="form-control select2 {{ $errors->has('asset_id') ? 'is-invalid' : '' }}" id="asset_id" name="asset_id">
                     @foreach($assets as $id => $asset)
                         <option value="{{ $id }}" {{ old('asset_id', $note->asset_id) == $id ? 'selected' : '' }}>{{ $asset }}</option>

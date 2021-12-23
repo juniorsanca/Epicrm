@@ -8,8 +8,19 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.leads.store") }}" enctype="multipart/form-data">
             @csrf
+
             <div class="form-group">
-                <label for="name"></label>
+                <label for="date">Date</label>
+                <input class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" placeholder="Date" name="date" id="date" value="{{ old('date', '') }}" required>
+                @if($errors->has('date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date') }}
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="name">Nom Prénom</label>
                 <input class="form-control {{ $errors->has('client') ? 'is-invalid' : '' }}" type="text" placeholder="NOM Prénom" name="client" id="client" value="{{ old('client', '') }}" required>
                 @if($errors->has('client'))
                     <div class="invalid-feedback">
@@ -19,12 +30,25 @@
             </div>
 
                <div class="form-group">
-                <label for="company">Tags</label>
-                <input class="form-control {{ $errors->has('company') ? 'is-invalid' : '' }}" type="text"  placeholder="PME, Partenanires, France" name="company" id="company" value="{{ old('company', '') }}" required>
+                <label for="company">Entreprise</label>
+                <input class="form-control {{ $errors->has('company') ? 'is-invalid' : '' }}" type="text"  placeholder="Entreprise" name="company" id="company" value="{{ old('company', '') }}" required>
                 @if($errors->has('company'))
                     <div class="invalid-feedback">
                         {{ $errors->first('company') }}
                     </div>
+                @endif
+            </div>
+
+            <!-----[SELECT STATE]----->
+            <div class="form-group" style="width: 99%">
+                <label for="company">Qualification</label>
+                {!! Form::select('state_id', $states, old('state_id'), ['class' => 'form-control select2']) !!}
+                <p class="help-block"></p>
+
+              @if($errors->has('state_id'))
+                    <p class="help-block">
+                        {{ $errors->first('state_id') }}
+                    </p>
                 @endif
             </div>
 
@@ -41,34 +65,7 @@
                     @endif
             </div> <br>
 
-            <!-----[SELECT USER]----->
-            <div class="form-group" style="width: 99%">
-                {!! Form::label('tenant_id', trans('Assigner à'). '',  ['class' => 'control-label']) !!}
-
-                {!! Form::select('tenant_id', $users, old('tenant_id'), ['class' => 'form-control select2']) !!}
-                <p class="help-block"></p>
-            </div>
-              @if($errors->has('tenant_id'))
-                    <p class="help-block">
-                        {{ $errors->first('tenant_id') }}
-                    </p>
-              @endif
-
-            <!-----[SELECT STATE]----->
-            <div class="form-group" style="width: 99%">
-                {!! Form::label('state_id', trans('Entrant'). '',  ['class' => 'control-label']) !!}
-
-                {!! Form::select('state_id', $states, old('state_id'), ['class' => 'form-control select2']) !!}
-                <p class="help-block"></p>
-
-              @if($errors->has('state_id'))
-                    <p class="help-block">
-                        {{ $errors->first('state_id') }}
-                    </p>
-                @endif
-            </div>
-
-                <div class="form-group">
+            <div class="form-group">
                 <label for="origin">Provenance</label>
                 <input class="form-control {{ $errors->has('origin') ? 'is-invalid' : '' }}" type="text" name="origin" id="origin" value="{{ old('origin', '') }}" required>
                 @if($errors->has('origin'))
@@ -78,16 +75,38 @@
                 @endif
             </div>
 
-                <div class="form-groupe">
-                    <input id="email" placeholder="Email" class="form-control" type="email" name="email" :value="old('email', '')" required />
-                @if($errors->has('email'))
+            <div class="form-group">
+                <label for="next_action">Date de rappel</label>
+                <input class="form-control {{ $errors->has('next_action') ? 'is-invalid' : '' }}" type="text" placeholder="Date de rappel" name="next_action" id="next_action" value="{{ old('next_action', '') }}" required>
+                @if($errors->has('next_action'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
+                        {{ $errors->first('next_action') }}
                     </div>
                 @endif
+            </div>
+
+            <div class="form-group">
+                <label for="action_state">Statut d'action</label>
+                <input class="form-control {{ $errors->has('action_state') ? 'is-invalid' : '' }}" type="text"  placeholder="Statut d'action" name="action_state" id="action_state" value="{{ old('action_state', '') }}" required>
+                @if($errors->has('action_state'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('action_state') }}
+                    </div>
+                @endif
+            </div>
+
+                <div class="form-groupe">
+                   <label for="origin">Adresse email</label>
+                    <input id="email" placeholder="example@gmail.com" class="form-control" type="email" name="email" :value="old('email', '')" required />
+                    @if($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
                 </div><br>
 
                 <div class="form-groupe">
+                 <label for="origin">Téléphone</label>
                 <input type="number" maxlength="10" class="form-control" placeholder="Téléphone" id="phone" name="phone" aria-label="phone" aria-describedby="basic-addon1" style="margin-left: 5px">
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
@@ -105,6 +124,19 @@
                     </div>
                 @endif
                 </div><br>
+
+            <!-----[SELECT USER]----->
+            <div class="form-group" style="width: 99%">
+                {!! Form::label('tenant_id', trans('Assigner à'). '',  ['class' => 'control-label']) !!}
+
+                {!! Form::select('tenant_id', $users, old('tenant_id'), ['class' => 'form-control select2']) !!}
+                <p class="help-block"></p>
+            </div>
+              @if($errors->has('tenant_id'))
+                    <p class="help-block">
+                        {{ $errors->first('tenant_id') }}
+                    </p>
+              @endif
 
             <div class="form-group">
                 <button class="btn btn-success" type="submit">

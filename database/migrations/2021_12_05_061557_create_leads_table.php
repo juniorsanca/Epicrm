@@ -14,19 +14,23 @@ class CreateLeadsTable extends Migration
     public function up()
     {
         Schema::create('leads', function (Blueprint $table) {
+
             $table->id();
+            $table->string('date');
             $table->string('client');
             $table->string('company');
+            $table->foreignId('state_id')->nullable();
             $table->string('coast');
-            $table->string('origin');
+            $table->string('origin'); //make a origin table category like state, and posibility to add origins
+            $table->string('next_action');
+            $table->string('action_state');
             $table->string('email');
             $table->string('phone');
             $table->string('description');
+
             $table->unsignedBigInteger('tenant_id');
             $table->foreign('tenant_id')->references('id')->on('users');
             $table->foreignId('user_id')->nullable();
-
-            $table->foreignId('state_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -48,22 +48,22 @@
                         <thead>
                         <tr>
                             <th>
-                                client
+                                Client
                             </th>
                              <th>
-                                company
+                                Entreprise
                             </th>
                              <th>
-                                coast
+                                Montant
                             </th>
                              <th>
-                                origin
+                                Provenance
                             </th>
                              <th>
-                                email
+                                Adresse email
                             </th>
                              <th>
-                                phone
+                                Téléphone
                             </th>
                         <!--
                               <th>

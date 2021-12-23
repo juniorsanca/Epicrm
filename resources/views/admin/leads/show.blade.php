@@ -9,21 +9,42 @@
         <table class="table table-bordered table-striped">
             <tr>
                 <th>
+                    Date
+                </th>
+                <td>
+                    {{ $lead->date ?? '' }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>
                     NOM Prénom
                 </th>
                 <td>
                     {{ $lead->client ?? '' }}
                 </td>
             </tr>
-                      <tr>
+
+            <tr>
                 <th>
-                    Tags
+                    Entreprise
                 </th>
                 <td>
                     {{ $lead->company ?? '' }}
                 </td>
             </tr>
-                      <tr>
+
+
+            <tr>
+                <th>
+                    Qualification
+                </th>
+                <td>
+                    {{ $lead->state_id ?? '' }}
+                </td>
+            </tr>
+
+            <tr>
                 <th>
                     Montant
                 </th>
@@ -31,7 +52,8 @@
                     {{ $lead->coast ?? '' }} €
                 </td>
             </tr>
-                      <tr>
+
+            <tr>
                 <th>
                     Provenance
                 </th>
@@ -39,7 +61,26 @@
                     {{ $lead->origin ?? '' }}
                 </td>
             </tr>
-                      <tr>
+
+            <tr>
+                <th>
+                    Date de rappel
+                </th>
+                <td>
+                    {{ $lead->next_action ?? '' }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Statut d'action
+                </th>
+                <td>
+                    {{ $lead->action_state ?? '' }}
+                </td>
+            </tr>
+
+            <tr>
                 <th>
                     Adresse email
                 </th>
@@ -47,7 +88,8 @@
                     {{ $lead->email ?? '' }}
                 </td>
             </tr>
-                      <tr>
+
+            <tr>
                 <th>
                     Téléphone
                 </th>
@@ -69,8 +111,13 @@
                     Assigner à
                 </th>
                 <td>
-                    {{ $lead->user_id ?? '' }}
+                    <!-----[Afficher la personne à qui le lead a été attribué]---->
+                    <!--    {{ $lead->client }}   -->
+                   @if (auth()->check() && auth()->user()->id)
+                        {{auth()->user()->name}}
+                    @endif
                 </td>
+
             </tr>
 
         </table>
