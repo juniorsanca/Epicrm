@@ -5,7 +5,7 @@ namespace App;
 use App\Traits\MultiTenantAssetTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Support\Facades\DB;
 
 class Lead extends Model
 {
@@ -50,6 +50,25 @@ class Lead extends Model
         return $this->belongsTo(User::class, 'user_id');
 
         //return $this->belongsToMany(State::class);
+    }
+
+    public static function getLead()
+    {
+        $records = DB::table('leads')->select(
+            'date',
+            'client',
+            'company',
+            'state_id',
+            'coast',
+            'origin',
+            'next_action',
+            'action_state',
+            'email',
+            'phone',
+            'description'
+        )->get()->toArray();
+
+        return $records;
     }
 
 }

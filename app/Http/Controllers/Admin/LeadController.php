@@ -97,12 +97,6 @@ class LeadController extends Controller
         $users = \App\User::where('id', auth()->user()->id)->get()->pluck('name', 'id');;
             // rechercher par user_id
         }
-
-        //$users = \App\User::where('tenant_id', auth()->user()->id)->get()->pluck('name', 'id');;
-        //$users = \App\User::pluck('name', 'id');;
-
-        // $states = State::all()->pluck('title');
-        //$states = \App\State::where('state_id', auth()->user()->id)->get()->pluck('title', 'id');;
         $states = State::pluck('title', 'id');
 
         //$x = State::all();
@@ -300,7 +294,7 @@ class LeadController extends Controller
     public function export()
     {
         abort_if(Gate::denies('lead_management_export'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return Excel::download(new LeadsExport, 'leads.xlsx');
+        return Excel::download(new LeadsExport, 'prospects.xlsx');
 
     }
 
@@ -308,14 +302,14 @@ class LeadController extends Controller
     {
         abort_if(Gate::denies('lead_management_import'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        //$aze = Lead::all();
-        Excel::import(new LeadsImport, $request->file('import_file'));
 
-        /*
-        dd($aze);
-        die();
-        */
-        //Excel::import(new LeadsImport, 'leads.xlsx');
+        if (!empty($request->file('import_file'))) {
+            Excel::import(new LeadsImport, $request->file('import_file'));
+
+        } else {
+            //dd('Le file est vide ');
+            return redirect()->back()->withMessage('Veuillez choisir un fichier avant d\'importer');
+        }
 
         return redirect()->back()->withMessage('Le prospect a été importé avec succès');
     }

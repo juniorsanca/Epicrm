@@ -36,7 +36,7 @@
                                   action="{{route('admin.leads.import')}}">
                                 @csrf
                                 <div class="mb-3 d-flex form-group">
-                                    <input class="form-control form-control-sm" name="import file" id="formFileSm" type="file" style="margin-left: 10px">
+                                    <input class="form-control form-control-sm" name="import_file" id="formFileSm" type="file" style="margin-left: 10px">
                                     <button type="submit" name="button" class="btn btn-outline-primary btn-sm" style="margin-left: 10px;">Importer </button>
                                 </div>
                             </form>
@@ -48,6 +48,9 @@
                         <thead>
                         <tr>
                             <th>
+                                Date
+                            </th>
+                            <th>
                                 Client
                             </th>
                              <th>
@@ -56,24 +59,6 @@
                              <th>
                                 Montant
                             </th>
-                             <th>
-                                Provenance
-                            </th>
-                             <th>
-                                Adresse email
-                            </th>
-                             <th>
-                                Téléphone
-                            </th>
-                        <!--
-                              <th>
-                                Commercial
-                            </th>
-
-                            <th>
-                                state*
-                            </th>
-                        -->
                             <th>
                                 &nbsp;
                             </th>
@@ -97,16 +82,13 @@
             aaSorting: [],
             ajax: "{{ route('admin.leads.index') }}",
             columns: [
+                { data: 'date', name: 'date' },
                 { data: 'client', name: 'client' },
                 { data: 'company', name: 'company' },
                 { data: 'coast', name: 'coast' },
-                { data: 'origin', name: 'origin' },
-                { data: 'email', name: 'email' },
-                { data: 'phone', name: 'phone' },
                 //{ data: 'user.name'},
                 //{ data: 'states.title' },
                 { data: 'actions', name: '' }
-
             ],
             orderCellsTop: true,
             order: [[ 0, 'desc' ]],

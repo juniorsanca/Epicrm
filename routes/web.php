@@ -87,7 +87,7 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
     Route::get('prospects', [\App\Http\Controllers\WelcomeController::class, 'prospects']);
 
 
-/*----------[ABONEMENTS]----------*/
+/*----------[ABONNEMENTS]----------*/
     Route::get('plans/home', [\App\Http\Controllers\PlanController::class, 'planhome'])->name('plans.home');
     Route::get('plans', [\App\Http\Controllers\PlanController::class, 'index'])->name('plans.index');
     Route::get('plans/{plan}', [\App\Http\Controllers\PlanController::class, 'show'])->name('plans.show');

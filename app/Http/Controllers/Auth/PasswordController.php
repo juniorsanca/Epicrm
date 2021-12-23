@@ -43,7 +43,7 @@ class PasswordController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
-            $redirect->withMessage('Password has been set successfully');
+            $redirect->withMessage('Le mot de passe a été crée avec succès');
         }
 
         return $redirect;
