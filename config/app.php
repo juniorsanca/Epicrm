@@ -180,7 +180,6 @@ return [
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        LaravelDaily\Invoices\InvoiceServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
 
 
