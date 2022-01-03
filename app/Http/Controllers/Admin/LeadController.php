@@ -205,7 +205,6 @@ class LeadController extends Controller
 
         //$lead = Lead::all();
         $user = User::all();
-
         return view('admin.leads.show', compact('lead', 'user'));
 
     }

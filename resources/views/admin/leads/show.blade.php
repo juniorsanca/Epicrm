@@ -102,7 +102,7 @@
                     Assigner à
                 </th>
                 <td>
-                    <!-----[Afficher la personne à qui le lead a été attribué]---->
+                    <!---[Afficher la personne à qui le lead a été attribué]--->
                     <!--    {{ $lead->client }}   -->
                    @if (auth()->check() && auth()->user()->id)
                         {{auth()->user()->name}}
