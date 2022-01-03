@@ -121,6 +121,18 @@
             </li>
         @endcan
 
+        @can('invoice_management_access')
+        <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.invoices.index") }}" class="c-sidebar-nav-link">
+                    <i class="c-sidebar-nav-icon fas fa-fw fa-sticky-note">
+
+                    </i>
+                    Gestion des factures
+                </a>
+        </li>
+        @endif
+
+
       <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.profile.edit") }}" class="c-sidebar-nav-link">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-user">

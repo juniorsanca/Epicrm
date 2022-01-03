@@ -7,14 +7,6 @@
 
     <div class="card-body">
         <table class="table table-bordered table-striped">
-            <tr>
-                <th>
-                    Date
-                </th>
-                <td>
-                    {{ $lead->date ?? '' }}
-                </td>
-            </tr>
 
             <tr>
                 <th>
@@ -31,16 +23,6 @@
                 </th>
                 <td>
                     {{ $lead->company ?? '' }}
-                </td>
-            </tr>
-
-
-            <tr>
-                <th>
-                    Qualification
-                </th>
-                <td>
-                    {{ $lead->state_id ?? '' }}
                 </td>
             </tr>
 
@@ -64,10 +46,19 @@
 
             <tr>
                 <th>
-                    Date de rappel
+                    Prochaine action
                 </th>
                 <td>
                     {{ $lead->next_action ?? '' }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Date de rappel
+                </th>
+                <td>
+                    {{ $lead->date_action ?? '' }}
                 </td>
             </tr>
 
@@ -119,6 +110,18 @@
                 </td>
 
             </tr>
+
+
+
+            <tr>
+                <th>
+                    Qualification
+                </th>
+                <td>
+                    {{ $lead->state ?? '' }}
+                </td>
+            </tr>
+
 
         </table>
         <div class="form-group">

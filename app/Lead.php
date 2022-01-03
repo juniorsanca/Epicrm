@@ -17,17 +17,19 @@ class Lead extends Model
      * @var array
      */
     protected $fillable = [
-        'date',
         'client',
         'company',
-        'state_id',
+        //'state_id',
+        'state',
         'coast',
         'origin',
         'next_action',
+        'date_action',
         'action_state',
         'email',
         'phone',
         'description',
+
         'tenant_id',
         'user_id',
     ];
@@ -55,17 +57,19 @@ class Lead extends Model
     public static function getLead()
     {
         $records = DB::table('leads')->select(
-            'date',
             'client',
             'company',
             'state_id',
             'coast',
             'origin',
             'next_action',
+            'date_action',
             'action_state',
             'email',
             'phone',
             'description'
+
+
         )->get()->toArray();
 
         return $records;

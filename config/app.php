@@ -180,6 +180,8 @@ return [
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        LaravelDaily\Invoices\InvoiceServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
 
@@ -239,6 +241,9 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Invoice' => LaravelDaily\Invoices\Facades\Invoice::class,
+        "PDF" => Barryvdh\DomPDF\Facade::class,
 
 
     ],

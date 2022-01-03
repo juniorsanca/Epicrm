@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Liste des opportunités
+                    Gestion des factures
                 </div>
 
                 <div class="card-body">
@@ -16,50 +16,33 @@
                         </div>
                     @endif
 
-                    <div class="d-flex">
-                    @can('lead_management_create')
-                    <div class="form-group">
-                            <a href="{{ route('admin.leads.create') }}" class="btn btn-outline-success btn-sm">Ajouter</a>
+                    @can('user_management_create')
+                        <div class="form-group">
+                            <a href="{{ route('admin.invoices.create') }}" class="btn-sm btn btn-success">Ajouter une facture</a>
                         </div>
                     @endcan
-
-                    @can('lead_management_export')
-                          <div class="form-group" style="margin-left: 5px">
-                            <a href="{{ route('admin.leads.export') }}" class="btn btn-outline-dark btn-sm">Exporter</a>
-                        </div>
-                    @endcan
-
-                    @can('lead_management_import')
-                    <div class="form-group">
-                            <form method="POST"
-                                  enctype="multipart/form-data"
-                                  action="{{route('admin.leads.import')}}">
-                                @csrf
-                                <div class="mb-3 d-flex form-group">
-                                    <input class="form-control form-control-sm" name="import_file" id="formFileSm" type="file" style="margin-left: 10px">
-                                    <button type="submit" name="button" class="btn btn-outline-primary btn-sm" style="margin-left: 10px;">Importer </button>
-                                </div>
-                            </form>
-                        </div>
-                    @endcan
-
-                      </div>
-                    <table class="table table-bordered table-striped table-hover ajaxTable datatable">
+                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable">
                         <thead>
                         <tr>
                             <th>
-                                Client
+                                ID
                             </th>
-                             <th>
+                            <th>
+                                Titre
+                            </th>
+                            <th>
                                 Entreprise
                             </th>
-                             <th>
-                                Montant
+                            <th>
+                                Numero de facture
+                            </th>
+                            <th>
+                                Date
                             </th>
                             <th>
                                 &nbsp;
                             </th>
-                        </tr>
+                            </tr>
                         </thead>
                     </table>
                 </div>
@@ -71,21 +54,24 @@
 @section('scripts')
 @parent
 <script>
+
     $(function () {
         let table = $('.datatable').DataTable({
             processing: true,
             serverSide: true,
             retrieve: true,
             aaSorting: [],
-            ajax: "{{ route('admin.leads.index') }}",
+            ajax: "{{ route('admin.invoices.index') }}",
             columns: [
-                { data: 'client', name: 'client' },
+                { data: 'id', name: '' },
+                { data: 'invoice_title', name: 'invoice_title' },
                 { data: 'company', name: 'company' },
-                { data: 'coast', name: 'coast' },
-                //{ data: 'user.name'},
-                //{ data: 'states.title' },
+                { data: 'invoice_number', name: 'invoice_number' },
+                { data: 'date', name: 'date' },
                 { data: 'actions', name: '' }
+
             ],
+
             orderCellsTop: true,
             order: [[ 0, 'desc' ]],
             pageLength: 100,
@@ -119,6 +105,7 @@
             $($.fn.dataTable.tables(true)).DataTable()
                 .columns.adjust();
         });
+
     });
 
 </script>

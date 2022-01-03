@@ -57,6 +57,10 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'prefix' => 'admin', 'mi
     Route::resource('leads', 'LeadController');
     //Route::get('leads', 'LeadController');
 
+    //Route::get('in', 'InvoiceController@show');
+    Route::resource('invoices', 'InvoiceController');
+    Route::get('invoice', 'InvoiceController@invoice')->name('invoices.invoice');
+
 
     Route::get('export', 'LeadController@export')->name('leads.export');
 

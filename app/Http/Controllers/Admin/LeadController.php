@@ -115,32 +115,23 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate([
-            'client' => 'required|string|max:255',
-            'company' => 'required|string|max:255',
-            'coast' => 'required|string|max:255',
-            'origin' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:10',
-            'description' => 'required|string|max:255',
-            /*IMPORTANT : Ajouter les champs necessaires apres!! */
 
-        ]);
 
         $lead = Lead::create([
-            'date'=> $request->input('date'),
             'client' => $request->input('client'),
             'company' => $request->input('company'),
-            'state_id' => $request->input('state_id'),
+            //'state_id' => $request->input('state_id'),
+            'state' => $request->input('state'),
             'coast' => $request->input('coast'),
             'origin' => $request->input('origin'),
             'next_action'=> $request->input('next_action'),
+            'date_action' => $request->input('date_action'),
             'action_state' => $request->input('action_state'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'description' => $request->input('description'),
             'user_id' => $request->input('tenant_id')
+
         ]);
 
 
@@ -213,7 +204,7 @@ class LeadController extends Controller
 
 
         //$lead = Lead::all();
-        //$user = User::all();
+        $user = User::all();
 
         return view('admin.leads.show', compact('lead', 'user'));
 
@@ -259,13 +250,14 @@ class LeadController extends Controller
 
         $lead = Lead::find($id);
         $lead->update([
-            'date'=> $request->date,
             'client' => $request->client,
             'company' => $request->company,
-            'state_id' => $request->state_id,
+            //'state_id' => $request->state_id,
+            'state' => $request->state_id,
             'coast' => $request->coast,
             'origin' => $request->origin,
             'next_action'=> $request->next_action,
+            'date_action' => $request->date_action,
             'action_state' => $request->action_state,
             'email' => $request->email,
             'phone' => $request->phone,

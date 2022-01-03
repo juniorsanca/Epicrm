@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
 {
-    use SoftDeletes, MultiTenantRoleTrait;
+    use MultiTenantRoleTrait;
+    //SoftDeetes
 
     protected $fillable = [
         'title', 'tenant_id',

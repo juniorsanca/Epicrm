@@ -10,16 +10,6 @@
             @csrf
 
             <div class="form-group">
-                <label for="date">Date</label>
-                <input class="form-control {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" placeholder="Date" name="date" id="date" value="{{ old('date', '') }}" required>
-                @if($errors->has('date'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('date') }}
-                    </div>
-                @endif
-            </div>
-
-            <div class="form-group">
                 <label for="name">Nom Prénom</label>
                 <input class="form-control {{ $errors->has('client') ? 'is-invalid' : '' }}" type="text" placeholder="NOM Prénom" name="client" id="client" value="{{ old('client', '') }}" required>
                 @if($errors->has('client'))
@@ -67,7 +57,7 @@
 
             <div class="form-group">
                 <label for="origin">Provenance</label>
-                <input class="form-control {{ $errors->has('origin') ? 'is-invalid' : '' }}" type="text" name="origin" id="origin" value="{{ old('origin', '') }}" required>
+                <input class="form-control {{ $errors->has('origin') ? 'is-invalid' : '' }}" type="text" placeholder="Provenance"  name="origin" id="origin" value="{{ old('origin', '') }}" required>
                 @if($errors->has('origin'))
                     <div class="invalid-feedback">
                         {{ $errors->first('origin') }}
@@ -75,12 +65,22 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <label for="next_action">Date de rappel</label>
-                <input class="form-control {{ $errors->has('next_action') ? 'is-invalid' : '' }}" type="text" placeholder="Date de rappel" name="next_action" id="next_action" value="{{ old('next_action', '') }}" required>
+               <div class="form-group">
+                <label for="next_action">Prochaine action</label>
+                <input class="form-control {{ $errors->has('next_action') ? 'is-invalid' : '' }}" type="text" placeholder="Prochaine action" name="next_action" id="next_action" value="{{ old('next_action', '') }}" required>
                 @if($errors->has('next_action'))
                     <div class="invalid-feedback">
                         {{ $errors->first('next_action') }}
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="date_action">Date de rappel</label>
+                <input class="form-control {{ $errors->has('date_action') ? 'is-invalid' : '' }}" type="text" placeholder="Date de rappel" name="date_action" id="date_action" value="{{ old('date_action', '') }}" required>
+                @if($errors->has('date_action'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date_action') }}
                     </div>
                 @endif
             </div>
@@ -97,7 +97,7 @@
 
                 <div class="form-groupe">
                    <label for="origin">Adresse email</label>
-                    <input id="email" placeholder="example@gmail.com" class="form-control" type="email" name="email" :value="old('email', '')" required />
+                    <input id="email" placeholder="example@gmail.com" class="form-control" type="text" name="email" :value="old('email', '')" required />
                     @if($errors->has('email'))
                         <div class="invalid-feedback">
                             {{ $errors->first('email') }}
@@ -107,7 +107,7 @@
 
                 <div class="form-groupe">
                  <label for="origin">Téléphone</label>
-                <input type="number" maxlength="10" class="form-control" placeholder="Téléphone" id="phone" name="phone" aria-label="phone" aria-describedby="basic-addon1" style="margin-left: 5px">
+                <input type="text" class="form-control" placeholder="Téléphone" id="phone" name="phone" aria-label="phone" aria-describedby="basic-addon1" style="margin-left: 5px">
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}

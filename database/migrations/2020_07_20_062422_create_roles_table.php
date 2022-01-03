@@ -19,7 +19,6 @@ class CreateRolesTable extends Migration
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->foreign('tenant_id')->references('id')->on('users');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
