@@ -126,7 +126,7 @@ class InvoiceController extends Controller
 
         $pdf = PDF::loadView('admin.invoices.invoice', compact('invoice'));
 
-        return $pdf->stream('admin.invoices.invoice', array('Attachment' => 0));
+        return $pdf->stream('admin.invoices.pdf', array('Attachment' => 0));
     }
 
     /*
